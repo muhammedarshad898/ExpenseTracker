@@ -12,7 +12,7 @@ export default function Home() {
   const handleGetStarted = () => {
    const token = sessionStorage.getItem('token');
     if (token) {
-      router.push('/dashboard'); // Logged in
+      router.push('/Dashboard'); // Logged in
     } else {
       router.push('/login'); // Not logged in
     }
