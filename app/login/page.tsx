@@ -69,7 +69,7 @@ export default function Login() {
             <button
               type="submit"
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
+           style={{cursor:"pointer"}} >
               Sign in
             </button>
           </div>
@@ -79,6 +79,7 @@ export default function Login() {
           <Link 
             href="/signup" 
             className="font-medium text-indigo-600 hover:text-indigo-500"
+            style={{cursor:"pointer"}}
           >
             New User? Register here
           </Link>

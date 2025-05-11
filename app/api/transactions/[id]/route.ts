@@ -9,9 +9,10 @@ export async function DELETE(req:Request,{params}:{params:{id:string}})
         if (result.valid === false) return result.response;
 
         
-        const transactionId=params.id
+        const {id}=params
+        
 
-        const deletedTransaction=await Transaction.findByIdAndDelete(transactionId)
+        const deletedTransaction=await Transaction.findByIdAndDelete(id);
         return NextResponse.json({success:true,deletedTransaction});
     } catch (error:any) {
         return NextResponse.json({
@@ -22,7 +23,7 @@ export async function DELETE(req:Request,{params}:{params:{id:string}})
     }
 }
 export async function PUT(req: Request, { params }: { params: { id: string } }) {
-  const transactionId = params.id; // access it first
+  const {id} = params // access it first
 
   try {
     const result = await jwtmiddleware(req);
@@ -39,7 +40,7 @@ export async function PUT(req: Request, { params }: { params: { id: string } }) 
     }
 
     const updatedTransaction = await Transaction.findByIdAndUpdate(
-      transactionId,
+      id,
       { title, amount, type, date }
     );
 

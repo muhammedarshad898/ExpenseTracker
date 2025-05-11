@@ -95,7 +95,7 @@ export default function Signup() {
           <Link 
             href="/login" 
             className="font-medium text-indigo-600 hover:text-indigo-500"
-          >
+         style={{cursor:"pointer"}}  >
             Already have an account? Sign in
           </Link>
         </div>
