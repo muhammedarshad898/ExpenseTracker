@@ -1,14 +1,14 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import mongoDBConnection from '../db.config/db.config'
+
 import { Toaster } from 'react-hot-toast'
 
 
 const inter = Inter({ subsets: ['latin'] })
 
 // Initialize MongoDB connection
-mongoDBConnection();
+
 
 export const metadata: Metadata = {
   title: 'Create Next App',

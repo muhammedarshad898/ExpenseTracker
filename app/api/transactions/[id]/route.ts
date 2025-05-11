@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import Transaction from "@/models/transactionmodels";
 import { jwtmiddleware } from "@/app/lib/jwtmiddleware";
+import mongoDBConnection from "@/db.config/db.config";
+
 
 // PUT /api/transactions/[id]
 export async function PUT(req: NextRequest, context: any) {
   try {
+    mongoDBConnection();
     const result = await jwtmiddleware(req);
     if (!result.valid) return result.response;
 

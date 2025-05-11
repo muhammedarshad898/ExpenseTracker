@@ -1,10 +1,12 @@
 import Transaction from "@/models/transactionmodels";
 import { NextResponse } from "next/server";
 import { jwtmiddleware } from "@/app/lib/jwtmiddleware";
+import mongoDBConnection from "@/db.config/db.config";
 
 
 export async function POST(req: Request) {
     try {
+        await mongoDBConnection();
         console.log("API POST request received"); 
      const result = await jwtmiddleware(req);
      if(result.valid===false)

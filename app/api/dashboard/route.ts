@@ -3,9 +3,11 @@ import Transaction from "@/models/transactionmodels";
 import { jwtmiddleware } from "@/app/lib/jwtmiddleware";
 
 import { NextResponse } from "next/server";
+import mongoDBConnection from "@/db.config/db.config";
 
 export async function GET(req: Request) {
     try {
+        await mongoDBConnection
         const result = await jwtmiddleware(req);
         if (result.valid === false) return result.response;
 
