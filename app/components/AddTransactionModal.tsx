@@ -5,7 +5,12 @@ import { FaTimes } from 'react-icons/fa';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-export default function AddTransactionModal({handlegettransactions}) {
+// Define prop types
+interface AddTransactionModalProps {
+  handlegettransactions: () => void;
+}
+
+export default function AddTransactionModal({ handlegettransactions }: AddTransactionModalProps) {
   const [formData, setFormData] = useState({
     title: '',
     amount: '',
@@ -34,10 +39,6 @@ export default function AddTransactionModal({handlegettransactions}) {
           date: '',
         });
         handlegettransactions();
-
-  
-
-      
       } else {
         toast.error('Failed to add transaction');
       }
@@ -51,13 +52,14 @@ export default function AddTransactionModal({handlegettransactions}) {
     <>
       <button
         onClick={() => setShowModal(true)}
-        className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md" style={{cursor:'pointer'}}
+        className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md"
+        style={{ cursor: 'pointer' }}
       >
         Add +
       </button>
 
       {showModal && (
-        <div className="fixed inset-0  flex items-center justify-center z-50">
+        <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="bg-white rounded-2xl shadow-xl w-full max-w-lg p-6 relative">
             <button
               onClick={() => setShowModal(false)}
@@ -123,4 +125,3 @@ export default function AddTransactionModal({handlegettransactions}) {
     </>
   );
 }
-

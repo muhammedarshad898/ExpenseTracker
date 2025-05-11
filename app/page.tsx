@@ -1,10 +1,24 @@
 // pages/index.tsx (or app/page.tsx for App Router)
+'use client';
 import Head from 'next/head';
 import { FaChartLine, FaWallet, FaMobileAlt } from 'react-icons/fa';
 import Header from './components/Header';
-import Link from 'next/link';
+
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const router = useRouter();
+
+  const handleGetStarted = () => {
+   const token = sessionStorage.getItem('token');
+    if (token) {
+      router.push('/dashboard'); // Logged in
+    } else {
+      router.push('/login'); // Not logged in
+    }
+  };
+ 
+
   return (
     <>
     <Header />
@@ -23,9 +37,9 @@ export default function Home() {
             <p className="text-lg mb-8 text-gray-600">
               TrackIt helps you monitor, categorize, and manage your money with ease. Get insights, stay on budget, and achieve financial freedom.
             </p>
-            <Link href="/Dashboard" className="px-6 py-3 bg-indigo-600 text-white rounded-xl shadow-md hover:bg-indigo-700 transition">
+            <button onClick={handleGetStarted} style={{ cursor: 'pointer' }} className="px-6 py-3 bg-indigo-600 text-white rounded-xl shadow-md hover:bg-indigo-700 transition">
               Get Started – It's Free
-            </Link>
+            </button>
           </div>
           <div className="w-full lg:w-1/2 mb-10 lg:mb-0">
             <img
