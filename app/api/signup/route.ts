@@ -1,9 +1,11 @@
 import User from "@/models/usermodel";
 import { NextResponse, NextRequest } from "next/server";
 import bcrypt from "bcryptjs";
+import mongoDBConnection from "@/db.config/db.config";
 
 export async function POST(req: NextRequest) {
     try {
+        await mongoDBConnection();
         const { username, email, password } = await req.json();
 
         // Input validation
