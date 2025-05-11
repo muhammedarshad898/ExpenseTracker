@@ -1,103 +1,68 @@
-import Image from "next/image";
+// pages/index.tsx (or app/page.tsx for App Router)
+import Head from 'next/head';
+import { FaChartLine, FaWallet, FaMobileAlt } from 'react-icons/fa';
+import Header from './components/Header';
+import Link from 'next/link';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+    <Header />
+      <Head>
+        <title>TrackIt | Smart Expense Tracker</title>
+        <meta name="description" content="Track your expenses smartly and easily with TrackIt." />
+      </Head>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+      <main className="min-h-screen bg-white-50 text-gray-800">
+        {/* Hero Section */}
+        <section className="flex flex-col-reverse lg:flex-row items-center justify-between px-6 md:px-16 py-20">
+          <div className="max-w-xl">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+              Take Control of Your <span className="text-indigo-600">Expenses</span>
+            </h1>
+            <p className="text-lg mb-8 text-gray-600">
+              TrackIt helps you monitor, categorize, and manage your money with ease. Get insights, stay on budget, and achieve financial freedom.
+            </p>
+            <Link href="/Dashboard" className="px-6 py-3 bg-indigo-600 text-white rounded-xl shadow-md hover:bg-indigo-700 transition">
+              Get Started – It's Free
+            </Link>
+          </div>
+          <div className="w-full lg:w-1/2 mb-10 lg:mb-0">
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/019/857/522/original/3d-illustration-of-financial-and-payment-concept-with-calculator-money-coin-and-credit-card-free-png.png"
+              alt="Finance illustration"
+              className="w-full"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="bg-white py-16 px-6 md:px-16">
+          <h2 className="text-3xl font-bold text-center mb-12">Why TrackIt?</h2>
+          <div className="grid md:grid-cols-3 gap-10 text-center">
+            <div className="p-6 rounded-xl shadow-md hover:shadow-lg transition">
+              <FaChartLine className="text-indigo-600 text-4xl mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Real-time Analytics</h3>
+              <p className="text-gray-600">Visualize your spending with smart charts and graphs.</p>
+            </div>
+            <div className="p-6 rounded-xl shadow-md hover:shadow-lg transition">
+              <FaWallet className="text-indigo-600 text-4xl mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Budget Management</h3>
+              <p className="text-gray-600">Set goals and stick to them with daily budget tracking.</p>
+            </div>
+            <div className="p-6 rounded-xl shadow-md hover:shadow-lg transition">
+              <FaMobileAlt className="text-indigo-600 text-4xl mx-auto mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Mobile Friendly</h3>
+              <p className="text-gray-600">Access and update your expenses from anywhere.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="bg-gray-100 text-center py-6">
+          <p className="text-sm text-gray-500">© 2025 TrackIt. All rights reserved.</p>
+        </footer>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    </>
   );
 }
